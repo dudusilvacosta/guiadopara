@@ -1,8 +1,15 @@
+# netlify.toml — coloque na raiz do seu projeto (ao lado do package.json)
+
 [build]
+  # comando de build do Next.js
   command = "pnpm build"
+  # o plugin do Next.js no Netlify cuida do diretório de publicação
+  publish = ".next"
 
-[build.environment]
-  NODE_VERSION = "20"
-
+# ativa o plugin oficial que habilita Next.js no Netlify
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  # garante que o build use produção
+  NODE_ENV = "production"
