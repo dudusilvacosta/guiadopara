@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+body {
+  max-width: 820px;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 20px;
+  color: #515bd4;
+}

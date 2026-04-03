@@ -1,0 +1,105 @@
+/* Container principal com scroll */
+.container {
+  height: calc(100svh - 120px);
+  width: 100%;
+  padding: 0 1rem;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #ccc transparent; /* Firefox */
+}
+
+.container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+/* Item da lista */
+.grid li {
+  list-style: none;
+}
+
+/* Card clicável */
+.card {
+  position: relative; /* obrigatório pro next/image fill */
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+/* Imagem */
+.image {
+  object-fit: cover;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* Hover estilo Instagram */
+.card:hover .image {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Overlay escuro (opcional, estilo Instagram) */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+}
+
+.card:hover::after {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Opcional: efeito ao clicar */
+.card:active {
+  transform: scale(0.98);
+}
+.label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 6px 12px;
+
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+
+  z-index: 2;
+
+  transition: opacity 0.3s ease;
+}
