@@ -12,9 +12,13 @@ export async function getTiposComCapa(): Promise<Imagem[] | null> {
 
     const { data, error } = await supabase.from("imagens").select("*");
 
-    if (error || !data) {
-      console.error("Supabase error (getTiposComCapa):", error);
-      return null;
+    if (error) {
+      console.error(error);
+    }
+
+    if (!data) {
+      console.warn("Sem dados retornados do Supabase");
+      return [];
     }
 
     const mapa = new Map<string, Imagem>();
@@ -52,9 +56,13 @@ export async function getImagensPorTipo(
       .eq("tipo", tipo)
       .order("id", { ascending: true });
 
-    if (error || !data) {
-      console.error("Supabase error (getImagensPorTipo):", error);
-      return null;
+    if (error) {
+      console.error(error);
+    }
+
+    if (!data) {
+      console.warn("Sem dados retornados do Supabase");
+      return [];
     }
 
     return data as Imagem[];
@@ -79,9 +87,8 @@ export async function getImagemPorId(id: number): Promise<Imagem | null> {
       .eq("id", id)
       .single();
 
-    if (error || !data) {
-      console.error("Supabase error (getImagemPorId):", error);
-      return null;
+    if (error) {
+      console.error(error);
     }
 
     return data as Imagem;
