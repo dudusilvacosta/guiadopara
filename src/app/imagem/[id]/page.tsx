@@ -14,6 +14,10 @@ export default async function ImagemPage({ params }: Props) {
 
   const imagem = await getImagemPorId(Number(id));
 
+  if (!imagem) {
+    return <p>Imagem não encontrada.</p>;
+  }
+
   return (
     <section className={styles.container}>
       <div className={styles.imageWrapper}>
