@@ -7,7 +7,9 @@ export async function getTiposComCapa() {
 
   const { data, error } = await supabase.from("imagens").select("*");
 
-  if (error) throw error;
+  if (error || !data) {
+    return null;
+  }
 
   const mapa = new Map<string, Imagem>();
 
@@ -35,7 +37,9 @@ export async function getImagensPorTipo(tipo: string) {
     .eq("tipo", tipo)
     .order("id", { ascending: true });
 
-  if (error) throw error;
+  if (error || !data) {
+    return null;
+  }
 
   return data as Imagem[];
 }
@@ -49,7 +53,9 @@ export async function getImagemPorId(id: number) {
     .eq("id", id)
     .single();
 
-  if (error) throw error;
+  if (error || !data) {
+    return null;
+  }
 
   return data as Imagem;
 }
