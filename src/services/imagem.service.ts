@@ -26,7 +26,6 @@ export async function getTiposComCapa(): Promise<Imagem[] | null> {
     for (const img of data as Imagem[]) {
       if (!img?.tipo) continue;
 
-      // mantém a primeira encontrada como capa (mais estável que Math.random)
       if (!mapa.has(img.tipo)) {
         mapa.set(img.tipo, img);
       }
