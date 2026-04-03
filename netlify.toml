@@ -12,4 +12,3 @@
 
 [build.environment]
   # garante que o build use produção
-  NODE_ENV = "production"

@@ -2,6 +2,12 @@ import { getImagensPorTipo } from "@/services/imagem.service";
 import Image from "next/image";
 import Link from "next/link"; // ✅ importar
 import styles from "@/style/grid.module.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Guia do Pará | Categoria",
+  description: "Criado por Eduardo Silva Costa",
+};
 
 type Props = {
   params: Promise<{

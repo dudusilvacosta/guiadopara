@@ -6,7 +6,14 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logoBorder}>
-        <Image src={img} alt="Logo" className={styles.logo} />
+        <Image
+          src={img}
+          alt="Logo"
+          width={50}
+          height={50}
+          className={styles.logo}
+          priority
+        />
       </div>
       <h1>Guia do Pará</h1>
     </header>
