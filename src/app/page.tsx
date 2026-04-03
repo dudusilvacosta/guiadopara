@@ -5,7 +5,9 @@ import styles from "@/style/grid.module.css";
 
 export default async function IndexPage() {
   const tipos = await getTiposComCapa();
-
+  if (!tipos) {
+    return <p>Categorias não encontradas.</p>;
+  }
   return (
     <section className={styles.container}>
       <h2 className={styles.title}>Categorias</h2>
