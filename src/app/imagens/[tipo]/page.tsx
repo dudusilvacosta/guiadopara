@@ -14,6 +14,10 @@ export default async function ImagensTipoPage({ params }: Props) {
 
   const imagens = await getImagensPorTipo(tipo);
 
+  if (!imagens) {
+    return <p>Imagens não encontradas.</p>;
+  }
+
   return (
     <section className={styles.container}>
       <h2 className={styles.title}>{tipo}</h2>
