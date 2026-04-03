@@ -1,4 +1,3 @@
-// app/[id]/page.tsx
 import { getImagemPorId } from "@/services/imagem.service";
 import Image from "next/image";
 import styles from "@/style/desc.module.css";
@@ -10,15 +9,19 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  params: Promise<{
+  params: {
     id: string;
-  }>;
+  };
 };
 
-export default async function ImagemPage({ params }: Props) {
-  const { id } = await params;
+export default async function ImagemPage(props: Props) {
+  const params = await Promise.resolve(props.params);
 
-  const imagem = await getImagemPorId(Number(id));
+  const id = Number(params.id);
+
+  console.log("ID recebido:", id);
+
+  const imagem = await getImagemPorId(id);
 
   if (!imagem) {
     return <p>Imagem não encontrada.</p>;
@@ -29,7 +32,7 @@ export default async function ImagemPage({ params }: Props) {
       <div className={styles.imageWrapper}>
         <Image
           src={imagem.url}
-          alt={imagem.nome}
+          alt={imagem.nome ?? "Imagem"}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className={styles.image}

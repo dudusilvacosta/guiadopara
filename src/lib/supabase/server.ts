@@ -10,11 +10,15 @@ export function createSupabaseServer() {
     {
       cookies: {
         async getAll() {
-          return (await cookieStore).getAll();
+          const store = await cookieStore;
+          return store.getAll();
         },
+
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(async ({ name, value, options }) => {
-            (await cookieStore).set(name, value, options);
+          cookieStore.then((store) => {
+            cookiesToSet.forEach(({ name, value, options }) => {
+              store.set(name, value, options);
+            });
           });
         },
       },
