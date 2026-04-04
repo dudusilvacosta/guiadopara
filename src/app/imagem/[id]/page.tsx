@@ -28,7 +28,7 @@ export default async function ImagemPage(props: Props) {
   }
 
   return (
-    <section className={styles.container}>
+    <>
       <div className={styles.imageWrapper}>
         <Image
           src={imagem.url}
@@ -39,13 +39,11 @@ export default async function ImagemPage(props: Props) {
         />
       </div>
 
-      <div style={{ padding: "0 1rem" }}>
+      <div style={{ margin: "0 1rem" }}>
         <h2 className={styles.color}>{imagem.nome}</h2>
 
-        <div className={styles.texto}>
-          <p className={styles.desc}>{imagem.desc}</p>
-        </div>
+        <p className={styles.desc}>{imagem.desc}</p>
       </div>
-    </section>
+    </>
   );
 }

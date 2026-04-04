@@ -17,31 +17,25 @@ export default async function IndexPage() {
   }
 
   return (
-    <section className={styles.container}>
-      <h2 className={styles.title}>Categorias</h2>
-
-      <ul className={styles.grid}>
-        {tipos.map((img) => {
-          if (!img?.tipo || !img?.url) return null;
-
-          return (
-            <li key={img.tipo}>
-              <Link href={`/imagens/${img.tipo}`} className={styles.card}>
-                <Image
-                  src={img.url}
-                  alt={img.nome ?? img.tipo}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className={styles.image}
-                  priority={false}
-                />
-
-                <span className={styles.label}>{img.tipo}</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+    <ul className={styles.grid}>
+      {tipos.map((img) => {
+        if (!img?.tipo || !img?.url) return null;
+        return (
+          <li key={img.tipo}>
+            <Link href={`/imagens/${img.tipo}`} className={styles.card}>
+              <Image
+                src={img.url}
+                alt={img.nome ?? img.tipo}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className={styles.image}
+                priority={false}
+              />
+              <span className={styles.label}>{img.tipo}</span>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 }

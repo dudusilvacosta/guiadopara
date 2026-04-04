@@ -1,9 +1,9 @@
 .header {
   height: 70px;
+  margin: 0 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0 1rem;
 }
 .logo {
   width: 50px;
@@ -12,15 +12,15 @@
 }
 .header h1 {
   font-size: 30px;
-  background: linear-gradient(45deg, #515bd4, #8134af, #dd2a7b, #f58529);
   background-clip: text;
+  background: linear-gradient(45deg, #515bd4, #8134af, #dd2a7b, #f58529);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .logoBorder {
-  border-radius: 50%;
-  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  border-radius: 50%;
 }

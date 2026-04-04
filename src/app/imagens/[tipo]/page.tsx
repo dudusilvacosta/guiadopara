@@ -25,25 +25,21 @@ export default async function ImagensTipoPage({ params }: Props) {
   }
 
   return (
-    <section className={styles.container}>
-      <h2 className={styles.title}>{tipo}</h2>
-
-      <ul className={styles.grid}>
-        {imagens.map((img) => (
-          <li key={img.id}>
-            <Link href={`/imagem/${img.id}`} className={styles.card}>
-              <Image
-                src={img.url}
-                alt={img.nome}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className={styles.image}
-              />
-              <span className={styles.label}>{img.nome}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <ul className={styles.grid}>
+      {imagens.map((img) => (
+        <li key={img.id}>
+          <Link href={`/imagem/${img.id}`} className={styles.card}>
+            <Image
+              src={img.url}
+              alt={img.nome}
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className={styles.image}
+            />
+            <span className={styles.label}>{img.nome}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }

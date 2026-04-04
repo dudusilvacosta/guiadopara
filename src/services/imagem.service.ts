@@ -4,7 +4,7 @@ import { createSupabaseServer } from "@/lib/supabase/server";
 import type { Imagem } from "@/types/imagem";
 
 /**
- * Busca imagens e retorna 1 "capa" por tipo
+ * Busca tipos e retorna 1 "capa" por tipo
  */
 export async function getTiposComCapa(): Promise<Imagem[] | null> {
   try {
@@ -93,6 +93,29 @@ export async function getImagemPorId(id: number): Promise<Imagem | null> {
     return data as Imagem;
   } catch (err) {
     console.error("Crash SSR getImagemPorId:", err);
+    return null;
+  }
+}
+
+export async function getPesquisa(pesquisa: string): Promise<Imagem[] | null> {
+  try {
+    const supabase = createSupabaseServer();
+
+    let query = supabase.from("imagens").select("*");
+
+    if (pesquisa && pesquisa.length >= 4) {
+      query = query.ilike("desc", `%${pesquisa}%`);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error(error);
+    }
+
+    return data as Imagem[];
+  } catch (err) {
+    console.error("Erro na pesquisa:", err);
     return null;
   }
 }

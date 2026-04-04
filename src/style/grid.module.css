@@ -1,14 +1,3 @@
-/* Container principal com scroll */
-.container {
-  height: calc(100svh - 120px);
-  width: 100%;
-  padding: 0 1rem;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #ccc transparent; /* Firefox */
-}
-
 .container::-webkit-scrollbar {
   width: 6px;
 }
@@ -19,28 +8,24 @@
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
   padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   list-style: none;
 }
 
-/* Item da lista */
 .grid li {
   list-style: none;
 }
 
-/* Card clicável */
 .card {
-  position: relative; /* obrigatório pro next/image fill */
+  position: relative;
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 
-/* Imagem */
 .image {
   object-fit: cover;
   transition:
@@ -48,13 +33,11 @@
     opacity 0.3s ease;
 }
 
-/* Hover estilo Instagram */
 .card:hover .image {
   transform: scale(1.05);
   opacity: 0.9;
 }
 
-/* Overlay escuro (opcional, estilo Instagram) */
 .card::after {
   content: "";
   position: absolute;
@@ -67,8 +50,27 @@
   background: rgba(0, 0, 0, 0.2);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
+.card:active {
+  transform: scale(0.98);
+}
+
+.label {
+  width: 100%;
+  padding: 6px 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.45);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+@media (max-width: 720px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -78,28 +80,4 @@
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-/* Opcional: efeito ao clicar */
-.card:active {
-  transform: scale(0.98);
-}
-.label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  padding: 6px 12px;
-
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-
-  font-size: 14px;
-  font-weight: 600;
-  text-align: center;
-
-  z-index: 2;
-
-  transition: opacity 0.3s ease;
 }
