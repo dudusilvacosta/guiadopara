@@ -33,7 +33,7 @@ export default function PesquisaInput() {
       </div>
 
       <ul className={styles.grid}>
-        {resultados.map((img, index) => (
+        {resultados.map((img) => (
           <li key={img.id}>
             <Link href={`/imagem/${img.id}`} className={styles.card}>
               <Image
@@ -41,7 +41,6 @@ export default function PesquisaInput() {
                 alt={img.nome}
                 fill
                 className={styles.image}
-                priority={index === 0}
               />
               <span className={styles.label}>{img.nome}</span>
             </Link>

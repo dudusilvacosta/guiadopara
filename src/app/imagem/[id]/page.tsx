@@ -32,7 +32,7 @@ export default async function ImagemPage(props: Props) {
           width={1200}
           height={800}
           className={styles.image}
-          // priority={index === 0}
+          priority
         />
       </div>
       <p className={styles.autor}>{imagem.autor}</p>

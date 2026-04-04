@@ -35,7 +35,7 @@ export default async function ImagensTipoPage({ params }: Props) {
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
               className={styles.image}
-              priority={index === 0}
+              priority={index < 3}
             />
             <span className={styles.label}>{img.nome}</span>
           </Link>

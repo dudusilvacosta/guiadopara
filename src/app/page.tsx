@@ -12,8 +12,9 @@ export default async function IndexPage() {
 
   return (
     <ul className={styles.grid}>
-      {tipos.map((img) => {
+      {tipos.map((img, index) => {
         if (!img?.tipo || !img?.url) return null;
+
         return (
           <li key={img.tipo}>
             <Link href={`/imagens/${img.tipo}`} className={styles.card}>
@@ -23,7 +24,7 @@ export default async function IndexPage() {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className={styles.image}
-                priority={false}
+                priority={index === 0}
               />
               <span className={styles.label}>{img.tipo}</span>
             </Link>
