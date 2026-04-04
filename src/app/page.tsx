@@ -2,12 +2,6 @@ import { getTiposComCapa } from "@/services/imagem.service";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/style/grid.module.css";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Guia do Pará | Categorias",
-  description: "Criado por Eduardo Silva Costa",
-};
 
 export default async function IndexPage() {
   const tipos = await getTiposComCapa();

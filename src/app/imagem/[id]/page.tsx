@@ -1,12 +1,6 @@
 import { getImagemPorId } from "@/services/imagem.service";
 import Image from "next/image";
 import styles from "@/style/desc.module.css";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Guia do Pará | Lugar",
-  description: "Criado por Eduardo Silva Costa",
-};
 
 type Props = {
   params: {
@@ -42,7 +36,10 @@ export default async function ImagemPage(props: Props) {
       <div style={{ margin: "0 1rem" }}>
         <h2 className={styles.color}>{imagem.nome}</h2>
 
-        <p className={styles.desc}>{imagem.desc}</p>
+        <div
+          className={styles.desc}
+          dangerouslySetInnerHTML={{ __html: imagem.desc }}
+        />
       </div>
     </>
   );

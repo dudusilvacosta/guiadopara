@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.secult.pa.gov.br",
       },
+      {
+        protocol: "https",
+        hostname: "commons.wikimedia.org",
+      },
     ],
   },
 };
