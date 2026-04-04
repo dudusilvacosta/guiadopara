@@ -6,18 +6,28 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "upload.wikimedia.org",
+        pathname: "/**",
       },
+
+      // Unsplash
       {
         protocol: "https",
-        hostname: "museus.pa.gov.br",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
       },
+
+      // Pexels
       {
         protocol: "https",
-        hostname: "www.secult.pa.gov.br",
+        hostname: "images.pexels.com",
+        pathname: "/**",
       },
+
+      // Pixabay
       {
         protocol: "https",
-        hostname: "commons.wikimedia.org",
+        hostname: "cdn.pixabay.com",
+        pathname: "/**",
       },
     ],
   },

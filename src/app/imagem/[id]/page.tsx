@@ -22,25 +22,25 @@ export default async function ImagemPage(props: Props) {
   }
 
   return (
-    <>
+    <div style={{ margin: "0 1rem" }}>
+      <h2 className={styles.color}>{imagem.nome}</h2>
       <div className={styles.imageWrapper}>
         <Image
+          key={imagem.id}
           src={imagem.url}
-          alt={imagem.nome ?? "Imagem"}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          alt={imagem.nome}
+          width={1200}
+          height={800}
           className={styles.image}
+          // priority={index === 0}
         />
       </div>
+      <p className={styles.autor}>{imagem.autor}</p>
 
-      <div style={{ margin: "0 1rem" }}>
-        <h2 className={styles.color}>{imagem.nome}</h2>
-
-        <div
-          className={styles.desc}
-          dangerouslySetInnerHTML={{ __html: imagem.desc }}
-        />
-      </div>
-    </>
+      <div
+        className={styles.desc}
+        dangerouslySetInnerHTML={{ __html: imagem.desc }}
+      />
+    </div>
   );
 }

@@ -26,7 +26,7 @@ export default async function ImagensTipoPage({ params }: Props) {
 
   return (
     <ul className={styles.grid}>
-      {imagens.map((img) => (
+      {imagens.map((img, index) => (
         <li key={img.id}>
           <Link href={`/imagem/${img.id}`} className={styles.card}>
             <Image
@@ -35,6 +35,7 @@ export default async function ImagensTipoPage({ params }: Props) {
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
               className={styles.image}
+              priority={index === 0}
             />
             <span className={styles.label}>{img.nome}</span>
           </Link>
