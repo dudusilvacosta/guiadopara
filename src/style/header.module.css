@@ -1,8 +1,8 @@
 .header {
   height: 70px;
-  margin: 0 1rem;
   display: flex;
   align-items: center;
+  text-decoration: none;
   gap: 1rem;
 }
 .logo {
@@ -23,4 +23,12 @@
   justify-content: center;
   background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
   border-radius: 50%;
+}
+@media (max-width: 600px) {
+  .header {
+    margin: 0 1rem;
+  }
+  .header h1 {
+    font-size: 24px;
+  }
 }
