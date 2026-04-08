@@ -36,12 +36,12 @@ export default function PesquisaInput() {
         {resultados.map((img) => (
           <li key={img.id}>
             <Link href={`/imagem/${img.id}`} className={styles.card}>
-              <Image
-                src={img.url}
-                alt={img.nome}
-                fill
-                className={styles.image}
-              />
+              <blockquote
+          style={{ position: "absolute", top: "-55px" }}
+          className="instagram-media"
+          data-instgrm-permalink={`https://www.instagram.com/p/${img.instagram_id}/?utm_source=ig_embed&utm_campaign=loading`}
+          data-instgrm-version="14"
+        ></blockquote>
               <span className={styles.label}>{img.nome}</span>
             </Link>
           </li>
