@@ -3,14 +3,53 @@
 import { createSupabaseServer } from "@/lib/supabase/server";
 import type { Imagem } from "@/types/imagem";
 
+const supabase = createSupabaseServer();
 /**
- * Busca tipos e retorna 1 "capa" por tipo
+ * Busca todos os tipos únicos de imagens
  */
-export async function getTiposComCapa(): Promise<Imagem[] | null> {
+export async function getTiposImagens(): Promise<string[] | null> {
   try {
-    const supabase = createSupabaseServer();
+    const { data, error } = await supabase
+      .from("imagens")
+      .select("tipo")
+      .order("tipo", { ascending: true });
 
-    const { data, error } = await supabase.from("imagens").select("*");
+    if (error) {
+      console.error(error);
+      return null;
+    }
+
+    if (!data || data.length === 0) {
+      return [];
+    }
+
+    const tiposUnicos = Array.from(
+      new Set(
+        data
+          .map((item) => item.tipo)
+          .filter((tipo): tipo is string => Boolean(tipo))
+      )
+    );
+
+    return tiposUnicos;
+  } catch (err) {
+    console.error("Crash SSR getTiposImagens:", err);
+    return null;
+  }
+}
+/**
+ * Busca imagens
+ */
+export async function getImagens(
+  tipo: string,
+): Promise<Imagem[] | null> {
+  try {
+    if (!tipo) return null;
+
+    const { data, error } = await supabase
+      .from("imagens")
+      .select("*")
+      .order("id", { ascending: true });
 
     if (error) {
       console.error(error);
@@ -21,23 +60,12 @@ export async function getTiposComCapa(): Promise<Imagem[] | null> {
       return [];
     }
 
-    const mapa = new Map<string, Imagem>();
-
-    for (const img of data as Imagem[]) {
-      if (!img?.tipo) continue;
-
-      if (!mapa.has(img.tipo)) {
-        mapa.set(img.tipo, img);
-      }
-    }
-
-    return Array.from(mapa.values());
+    return data as Imagem[];
   } catch (err) {
-    console.error("Crash SSR getTiposComCapa:", err);
+    console.error("Crash SSR getImagensPorTipo:", err);
     return null;
   }
 }
-
 /**
  * Busca imagens por tipo
  */
@@ -46,8 +74,6 @@ export async function getImagensPorTipo(
 ): Promise<Imagem[] | null> {
   try {
     if (!tipo) return null;
-
-    const supabase = createSupabaseServer();
 
     const { data, error } = await supabase
       .from("imagens")
@@ -70,15 +96,12 @@ export async function getImagensPorTipo(
     return null;
   }
 }
-
 /**
  * Busca imagem por ID
  */
 export async function getImagemPorId(id: number): Promise<Imagem | null> {
   try {
     if (!id) return null;
-
-    const supabase = createSupabaseServer();
 
     const { data, error } = await supabase
       .from("imagens")
@@ -96,11 +119,11 @@ export async function getImagemPorId(id: number): Promise<Imagem | null> {
     return null;
   }
 }
-
+/**
+ * Busca imagens por pesquisa no campo descrição
+ */
 export async function getPesquisa(pesquisa: string): Promise<Imagem[] | null> {
   try {
-    const supabase = createSupabaseServer();
-
     let query = supabase.from("imagens").select("*");
 
     if (pesquisa && pesquisa.length >= 4) {

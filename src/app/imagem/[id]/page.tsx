@@ -1,5 +1,4 @@
 import { getImagemPorId } from "@/services/imagem.service";
-import Image from "next/image";
 import styles from "@/style/desc.module.css";
 
 type Props = {
@@ -23,18 +22,17 @@ export default async function ImagemPage(props: Props) {
 
   return (
     <div style={{ margin: "0 1rem" }}>
-      <h2 className={styles.color}>{imagem.nome}</h2>
-      <div className={styles.imageWrapper}>
-        <Image
-          key={imagem.id}
-          src={imagem.url}
-          alt={imagem.nome}
-          width={1200}
-          height={800}
-          className={styles.image}
-          priority
-        />
+
+      <div style={{ position: "relative", height: "324px", overflow: "hidden" }}>
+        <blockquote
+          style={{ position: "absolute", top: "-55px" }}
+          className="instagram-media"
+          data-instgrm-permalink={`https://www.instagram.com/p/${imagem.instagram_id}/?utm_source=ig_embed&utm_campaign=loading`}
+          data-instgrm-version="14"
+        ></blockquote>
       </div>
+      <h2 className={styles.color}>{imagem.nome}</h2>
+
       <p className={styles.autor}>{imagem.autor}</p>
 
       <div

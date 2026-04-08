@@ -24,6 +24,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Nav />
         </div>
+         <script async src="//www.instagram.com/embed.js"></script>
       </body>
     </html>
   );

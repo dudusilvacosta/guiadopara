@@ -1,6 +1,5 @@
 import { getImagensPorTipo } from "@/services/imagem.service";
-import Image from "next/image";
-import Link from "next/link"; // ✅ importar
+import Link from "next/link";
 import styles from "@/style/grid.module.css";
 import { Metadata } from "next";
 
@@ -29,14 +28,7 @@ export default async function ImagensTipoPage({ params }: Props) {
       {imagens.map((img, index) => (
         <li key={img.id}>
           <Link href={`/imagem/${img.id}`} className={styles.card}>
-            <Image
-              src={img.url}
-              alt={img.nome}
-              fill
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className={styles.image}
-              priority={index < 3}
-            />
+            {index + 1}, {img.nome}
             <span className={styles.label}>{img.nome}</span>
           </Link>
         </li>

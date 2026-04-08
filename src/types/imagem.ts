@@ -3,7 +3,7 @@ export type Imagem = {
   nome: string;
   desc: string;
   autor: string;
-  url: string;
+  instagram_id: string;
   tipo: string;
   status: boolean;
   corrds: string;
