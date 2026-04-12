@@ -1,0 +1,49 @@
+.pesquisa {
+  width: 100%;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+.pesquisa input {
+  width: 80%;
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #515bd4;
+  border-radius: 4px;
+}
+
+.grid {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.card:hover {
+  background: #eaeaea;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

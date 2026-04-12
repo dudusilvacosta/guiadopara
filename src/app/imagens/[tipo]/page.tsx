@@ -1,6 +1,6 @@
 import { getImagensPorTipo } from "@/services/imagem.service";
 import Link from "next/link";
-import styles from "@/style/grid.module.css";
+import styles from "@/style/tipo.module.css";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,14 +25,14 @@ export default async function ImagensTipoPage({ params }: Props) {
 
   return (
     <ul className={styles.grid}>
-      {imagens.map((img, index) => (
-        <li key={img.id}>
-          <Link href={`/imagem/${img.id}`} className={styles.card}>
-            {index + 1}, {img.nome}
-            <span className={styles.label}>{img.nome}</span>
-          </Link>
-        </li>
-      ))}
-    </ul>
+  {imagens.map((img) => (
+    <li key={img.id}>
+      <Link href={`/imagens/imagem/${img.id}`} className={styles.card}>
+      
+        <strong>{img.nome}</strong>
+      </Link>
+    </li>
+  ))}
+</ul>
   );
 }

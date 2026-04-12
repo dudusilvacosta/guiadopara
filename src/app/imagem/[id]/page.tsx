@@ -23,22 +23,15 @@ export default async function ImagemPage(props: Props) {
   return (
     <div style={{ margin: "0 1rem" }}>
 
-      <div style={{ position: "relative", height: "324px", overflow: "hidden" }}>
-        <blockquote
+       <blockquote
           style={{ position: "absolute", top: "-55px" }}
           className="instagram-media"
           data-instgrm-permalink={`https://www.instagram.com/p/${imagem.instagram_id}/?utm_source=ig_embed&utm_campaign=loading`}
           data-instgrm-version="14"
         ></blockquote>
-      </div>
       <h2 className={styles.color}>{imagem.nome}</h2>
 
       <p className={styles.autor}>{imagem.autor}</p>
-
-      <div
-        className={styles.desc}
-        dangerouslySetInnerHTML={{ __html: imagem.desc }}
-      />
     </div>
   );
 }

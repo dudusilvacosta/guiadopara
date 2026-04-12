@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import { getPesquisa } from "@/services/imagem.service";
 import { Imagem } from "@/types/imagem";
-import styles from "@/style/grid.module.css";
-import styless from "@/style/pesquisa.module.css";
+import styles from "@/style/tipo.module.css";
 import Link from "next/link";
 
 export default function PesquisaInput() {
@@ -22,7 +21,7 @@ export default function PesquisaInput() {
 
   return (
     <>
-      <div className={styless.pesquisa}>
+      <div className={styles.pesquisa}>
         <input
           type="search"
           placeholder="Pesquisar..."
@@ -31,15 +30,16 @@ export default function PesquisaInput() {
         />
       </div>
 
-      <ul className={styles.grid}>
-        {resultados.map((img) => (
-          <li key={img.id}>
-            <Link href={`/imagem/${img.id}`} className={styles.card}>
-              <span className={styles.label}>{img.nome}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+       <ul className={styles.grid}>
+  {resultados.map((img) => (
+    <li key={img.id}>
+      <Link href={`/imagens/imagem/${img.id}`} className={styles.card}>
+      
+        <strong>{img.nome}</strong>
+      </Link>
+    </li>
+  ))}
+</ul>
     </>
   );
 }

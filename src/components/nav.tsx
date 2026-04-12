@@ -42,13 +42,13 @@ export default function Nav() {
         </li>
 
         <li>
-          <Link href="/">
+          <Link href="/favoritos">
             <Heart />
           </Link>
         </li>
 
         <li>
-          <Link href="/contato">
+          <Link href="/home">
             <User />
           </Link>
         </li>
