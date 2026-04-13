@@ -7,34 +7,34 @@ const supabase = createSupabaseServer();
 /**
  * Busca todos os tipos únicos de imagens
  */
-export async function getTiposImagens(): Promise<string[] | null> {
+import type { Tipo } from "@/types/tipo";
+
+export async function getTiposImagens(): Promise<Tipo[]> {
   try {
     const { data, error } = await supabase
       .from("imagens")
-      .select("tipo")
-      .order("tipo", { ascending: true });
+      .select("tipo, slug") // 👈 MUITO IMPORTANTE
 
     if (error) {
       console.error(error);
-      return null;
+      return [];
     }
 
     if (!data || data.length === 0) {
       return [];
     }
 
+    // remove duplicados pelo slug
     const tiposUnicos = Array.from(
-      new Set(
-        data
-          .map((item) => item.tipo)
-          .filter((tipo): tipo is string => Boolean(tipo))
-      )
+      new Map(
+        data.map((item) => [item.slug, item])
+      ).values()
     );
 
     return tiposUnicos;
   } catch (err) {
     console.error("Crash SSR getTiposImagens:", err);
-    return null;
+    return [];
   }
 }
 /**
@@ -70,30 +70,26 @@ export async function getImagens(
  * Busca imagens por tipo
  */
 export async function getImagensPorTipo(
-  tipo: string,
-): Promise<Imagem[] | null> {
+  slug: string,
+): Promise<Imagem[]> {
   try {
-    if (!tipo) return null;
+    if (!slug) return []; // ✅
 
     const { data, error } = await supabase
       .from("imagens")
       .select("*")
-      .eq("tipo", tipo)
+      .eq("slug", slug)
       .order("id", { ascending: true });
 
     if (error) {
       console.error(error);
+      return []; // ✅
     }
 
-    if (!data) {
-      console.warn("Sem dados retornados do Supabase");
-      return [];
-    }
-
-    return data as Imagem[];
+    return data ?? []; // ✅ garante array
   } catch (err) {
     console.error("Crash SSR getImagensPorTipo:", err);
-    return null;
+    return []; // ✅
   }
 }
 /**
