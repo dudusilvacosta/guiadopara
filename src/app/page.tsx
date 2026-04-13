@@ -29,6 +29,8 @@ export default async function IndexPage() {
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/FortePresepio-CCBY.jpg/960px-FortePresepio-CCBY.jpg";
       case "ilhas":
         return "https://upload.wikimedia.org/wikipedia/commons/3/32/Praia_de_S%C3%A3o_Jo%C3%A3o_-_Salvaterra_-_Ilha_do_Maraj%C3%B3_-_Par%C3%A1.jpg";
+       case "praias":
+        return "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Ilha_de_Maraj%C3%B3_Beach%2C_Par%C3%A1%2C_Brazil.jpg/960px-Ilha_de_Maraj%C3%B3_Beach%2C_Par%C3%A1%2C_Brazil.jpg?_=20120113235018";
       default:
         return "https://cdn.pixabay.com/photo/2019/04/11/22/29/airport-4120835_1280.jpg";
     }
