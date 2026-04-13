@@ -75,7 +75,7 @@ export async function getImagensPorTipo(
 ): Promise<Imagem[]> {
 const supabase = createSupabaseServer();
   try {
-    if (!slug) return []; // ✅
+    if (!slug) return [];
 
     const { data, error } = await supabase
       .from("imagens")
@@ -85,13 +85,13 @@ const supabase = createSupabaseServer();
 
     if (error) {
       console.error(error);
-      return []; // ✅
+      return [];
     }
 
-    return data ?? []; // ✅ garante array
+    return data ?? [];
   } catch (err) {
     console.error("Crash SSR getImagensPorTipo:", err);
-    return []; // ✅
+    return [];
   }
 }
 /**
@@ -119,7 +119,7 @@ const supabase = createSupabaseServer();
   }
 }
 /**
- * Busca imagens por pesquisa no campo descrição
+ * Busca imagens por pesquisa no campo nome
  */
 export async function getPesquisa(pesquisa: string): Promise<Imagem[] | null> {
 const supabase = createSupabaseServer();
@@ -127,7 +127,7 @@ const supabase = createSupabaseServer();
     let query = supabase.from("imagens").select("*");
 
     if (pesquisa && pesquisa.length >= 4) {
-      query = query.ilike("desc", `%${pesquisa}%`);
+      query = query.ilike("nome", `%${pesquisa}%`);
     }
 
     const { data, error } = await query;
