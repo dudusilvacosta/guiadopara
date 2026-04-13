@@ -28,7 +28,6 @@ export default async function ImagensTipoPage({ params }: Props) {
   {imagens.map((img) => (
     <li key={img.id}>
       <Link href={`/imagens/imagem/${img.id}`} className={styles.card}>
-      
         <strong>{img.nome}</strong>
       </Link>
     </li>

@@ -3,13 +3,13 @@
 import { createSupabaseServer } from "@/lib/supabase/server";
 import type { Imagem } from "@/types/imagem";
 
-const supabase = createSupabaseServer();
 /**
  * Busca todos os tipos únicos de imagens
  */
 import type { Tipo } from "@/types/tipo";
 
 export async function getTiposImagens(): Promise<Tipo[]> {
+const supabase = createSupabaseServer();
   try {
     const { data, error } = await supabase
       .from("imagens")
@@ -43,6 +43,7 @@ export async function getTiposImagens(): Promise<Tipo[]> {
 export async function getImagens(
   tipo: string,
 ): Promise<Imagem[] | null> {
+const supabase = createSupabaseServer();
   try {
     if (!tipo) return null;
 
@@ -72,6 +73,7 @@ export async function getImagens(
 export async function getImagensPorTipo(
   slug: string,
 ): Promise<Imagem[]> {
+const supabase = createSupabaseServer();
   try {
     if (!slug) return []; // ✅
 
@@ -96,6 +98,7 @@ export async function getImagensPorTipo(
  * Busca imagem por ID
  */
 export async function getImagemPorId(id: number): Promise<Imagem | null> {
+const supabase = createSupabaseServer();
   try {
     if (!id) return null;
 
@@ -119,6 +122,7 @@ export async function getImagemPorId(id: number): Promise<Imagem | null> {
  * Busca imagens por pesquisa no campo descrição
  */
 export async function getPesquisa(pesquisa: string): Promise<Imagem[] | null> {
+const supabase = createSupabaseServer();
   try {
     let query = supabase.from("imagens").select("*");
 

@@ -13,21 +13,21 @@ export default async function IndexPage() {
 
   function getImagemPorTipo(tipo: string): string {
     switch (tipo) {
-      case "Exposições":
+      case "exposicoes":
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Museu_do_Forte_do_Pres%C3%A9pio_-_Bel%C3%A9m_05.jpg/960px-Museu_do_Forte_do_Pres%C3%A9pio_-_Bel%C3%A9m_05.jpg";
-      case "Palacetes":
+      case "palacetes":
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Palacete_Bolonha_-_IMG_9242_%282764919641%29.jpg/960px-Palacete_Bolonha_-_IMG_9242_%282764919641%29.jpg";
-      case "Parques":
+      case "parques":
         return "https://upload.wikimedia.org/wikipedia/commons/3/3c/Est%C3%A1tua_de_Rui_Barata_no_Paque_da_Resid%C3%AAncia_%281662010834%29.jpg";
-      case "Igrejas":
+      case "igrejas":
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/IgrejaDoCarmo_Bel%C3%A9m_muses_de_belem_226_%283573720067%29.jpg/960px-IgrejaDoCarmo_Bel%C3%A9m_muses_de_belem_226_%283573720067%29.jpg";
-      case "Teatros":
+      case "teatros":
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Theatro_da_Paz_05.jpg/960px-Theatro_da_Paz_05.jpg";
-      case "Bosques":
+      case "bosques":
         return "https://cdn.pixabay.com/photo/2020/01/16/00/44/park-4769324_1280.jpg";
-      case "Históricos":
+      case "historicos":
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/FortePresepio-CCBY.jpg/960px-FortePresepio-CCBY.jpg";
-      case "Ilhas":
+      case "ilhas":
         return "https://upload.wikimedia.org/wikipedia/commons/3/32/Praia_de_S%C3%A3o_Jo%C3%A3o_-_Salvaterra_-_Ilha_do_Maraj%C3%B3_-_Par%C3%A1.jpg";
       default:
         return "https://cdn.pixabay.com/photo/2019/04/11/22/29/airport-4120835_1280.jpg";
@@ -40,10 +40,11 @@ export default async function IndexPage() {
         <li key={tipo.slug}>
           <Link href={`/imagens/${tipo.slug}`} className={styles.card}>
             <Image
-              src={getImagemPorTipo(tipo.tipo)}
+              src={getImagemPorTipo(tipo.slug)}
               alt={tipo.tipo}
               className={styles.image}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <span className={styles.label}>{tipo.tipo}</span>
           </Link>
