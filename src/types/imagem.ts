@@ -6,6 +6,6 @@ export type Imagem = {
   instagram_id: string;
   tipo: string;
   status: boolean;
-  corrds: string;
+  coords: [string, string];
   created_at: string;
 };

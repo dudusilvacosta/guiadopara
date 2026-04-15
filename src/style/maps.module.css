@@ -1,0 +1,26 @@
+.botaoMaps {
+  background-color: #1a73e8; /* azul estilo Google */
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.botaoMaps:hover {
+  background-color: #1669c1;
+  transform: translateY(-1px);
+}
+
+.botaoMaps:active {
+  transform: translateY(0);
+  background-color: #1557a0;
+}
+
+.botaoMaps:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
