@@ -23,8 +23,8 @@ export default async function ImagemPage({ params }: Props) {
   const isValid = !isNaN(lat) && !isNaN(lng);
 
   const mapsUrl = isValid
-    ? `https://www.google.com/maps?q=${lat},${lng}`
-    : null;
+  ? `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`
+  : null;
 
   return (
     <div style={{ margin: "0 1rem" }}>
