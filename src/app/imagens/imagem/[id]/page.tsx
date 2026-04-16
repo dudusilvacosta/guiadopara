@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default async function ImagemPage({ params }: Props) {
-  const { id } = await params; // ✅ obrigatório aqui
+  const { id } = await params;
 
   const imagem = await getImagemPorId(Number(id));
 
