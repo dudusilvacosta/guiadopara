@@ -35,7 +35,7 @@ export default async function ImagemPage({ params }: Props) {
           <button className={style.botaoMaps}>Abrir no Google Maps</button>
         </a>
       ) : (
-        <p>Coordenadas inválidas</p>
+        <p></p>
       )}
     </div>
   );
