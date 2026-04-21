@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div>
+    <div style={{padding: "1rem"}}>
       <p>
         Este sistema foi desenvolvido durante meus estudos com o framework
         Next.js, com o objetivo de aplicar na prática conceitos de organização
