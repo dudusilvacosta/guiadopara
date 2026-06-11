@@ -1,4 +1,4 @@
-import { getImagensPorTipo } from "@/services/imagem.service";
+import { getImagensPorTipo } from "@/data/imagens";
 import Link from "next/link";
 import styles from "@/style/tipo.module.css";
 import { Metadata } from "next";
@@ -17,21 +17,24 @@ type Props = {
 export default async function ImagensTipoPage({ params }: Props) {
   const { tipo } = await params;
 
-  const imagens = await getImagensPorTipo(tipo);
+  const imagens = getImagensPorTipo(tipo);
 
-  if (!imagens) {
+  if (imagens.length === 0) {
     return <p>Imagens não encontradas.</p>;
   }
 
   return (
     <ul className={styles.grid}>
-  {imagens.map((img) => (
-    <li key={img.id}>
-      <Link href={`/imagens/imagem/${img.id}`} className={styles.card}>
-        <strong>{img.nome}</strong>
-      </Link>
-    </li>
-  ))}
-</ul>
+      {imagens.map((img) => (
+        <li key={img.id}>
+          <Link
+            href={`/imagens/imagem/${img.id}`}
+            className={styles.card}
+          >
+            <strong>{img.nome}</strong>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getPesquisa } from "@/services/imagem.service";
+import { getPesquisa } from "@/data/imagens";
 import { Imagem } from "@/types/imagem";
 import styles from "@/style/tipo.module.css";
 import Link from "next/link";
@@ -11,9 +11,9 @@ export default function PesquisaInput() {
   const [resultados, setResultados] = useState<Imagem[]>([]);
 
   useEffect(() => {
-    const delay = setTimeout(async () => {
-      const res = await getPesquisa(termo);
-      setResultados(res || []);
+    const delay = setTimeout(() => {
+      const res = getPesquisa(termo);
+      setResultados(res as unknown as Imagem[]);
     }, 300);
 
     return () => clearTimeout(delay);
@@ -30,16 +30,18 @@ export default function PesquisaInput() {
         />
       </div>
 
-       <ul className={styles.grid}>
-  {resultados.map((img) => (
-    <li key={img.id}>
-      <Link href={`/imagens/imagem/${img.id}`} className={styles.card}>
-      
-        <strong>{img.nome}</strong>
-      </Link>
-    </li>
-  ))}
-</ul>
+      <ul className={styles.grid}>
+        {resultados.map((img) => (
+          <li key={img.id}>
+            <Link
+              href={`/imagens/imagem/${img.id}`}
+              className={styles.card}
+            >
+              <strong>{img.nome}</strong>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
